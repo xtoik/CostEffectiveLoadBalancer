@@ -1,11 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
 namespace CostEffectiveLoadBalancer.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Dal;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
@@ -15,14 +17,16 @@ namespace CostEffectiveLoadBalancer.Web.Controllers
         };
 
         [HttpGet("[action]")]
-        public IEnumerable<WeatherForecast> WeatherForecasts()
+        public async Task<IEnumerable<WeatherForecast>> WeatherForecasts([FromServices] CostEffectiveLoadBalancerContext dbContext)
         {
+            var providers = await dbContext.Providers.ToListAsync();
+
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
                 TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
+                Summary = $"{(index % 2 == 0 ? providers.First().Name : providers.Last().Name)} {Summaries[rng.Next(Summaries.Length)]}"
             });
         }
 

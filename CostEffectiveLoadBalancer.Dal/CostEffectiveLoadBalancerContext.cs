@@ -1,12 +1,13 @@
 namespace CostEffectiveLoadBalancer.Dal
 {
+    using CostEffectiveLoadBalancer.Dal.Extensions;
     using CostEffectiveLoadBalancer.Domain.Entity;
     using Microsoft.EntityFrameworkCore;
 
-    public class CostEffectiveLoadBalanceContext : DbContext
+    public class CostEffectiveLoadBalancerContext : DbContext
     {
-        public CostEffectiveLoadBalanceContext(DbContextOptions opt) : base(opt)
-        {            
+        public CostEffectiveLoadBalancerContext(DbContextOptions options) : base(options)
+        {
         }
 
         public DbSet<Application> Applications { get; set; }
@@ -26,5 +27,10 @@ namespace CostEffectiveLoadBalancer.Dal
         public DbSet<ProviderEndpointConsumption> ProviderEndpointConsumptions { get; set; }
 
         public DbSet<ResourceType> ResourceTypes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
+        }
     }
 }
