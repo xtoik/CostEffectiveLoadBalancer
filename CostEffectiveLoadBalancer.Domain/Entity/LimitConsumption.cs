@@ -1,19 +1,24 @@
 namespace CostEffectiveLoadBalancer.Domain.Entity
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    
     public class LimitConsumption
     {
         public int Id { get; set; }
 
-        [Required()]
+        [Required]
         public int LimitId { get; set; }
 
-        [Required()]
+        [Required]
         public DateTime PeriodStart { get; set; }
 
-        [Required()]
+        [Required]
         public DateTime PeriodEnd { get; set; }
 
-        [Required()]
+        [Required]
         public int Value { get; set; }
+
+        public virtual Limit Limit { get; set; }
     }
 }

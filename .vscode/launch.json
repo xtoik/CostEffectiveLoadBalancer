@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/CostEffectiveLoadBalancer.Web/bin/Debug/netcoreapp2.1/CostEffectiveLoadBalancer.Web.dll",
+            "program": "${workspaceFolder}/CostEffectiveLoadBalancer.Web/bin/Debug/netcoreapp2.2/CostEffectiveLoadBalancer.Web.dll",
             "args": [],
             "cwd": "${workspaceFolder}/CostEffectiveLoadBalancer.Web",
             "stopAtEntry": false,

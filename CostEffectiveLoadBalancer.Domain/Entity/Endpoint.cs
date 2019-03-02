@@ -1,16 +1,18 @@
 namespace CostEffectiveLoadBalancer.Domain.Entity
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Endpoint
     {
         public int Id { get; set; }
 
-        [Required()]
+        [Required]
         public int ApplicationId { get; set; }
 
-        [Required(), MaxLength(45)]
+        [Required, StringLength(45)]
         public string Name { get; set; }
 
-        [MaxLength(255)]
+        [StringLength(255)]
         public string Description { get; set; }
 
         public virtual Application Application { get; set; }
