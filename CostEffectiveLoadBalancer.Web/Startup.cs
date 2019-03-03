@@ -66,7 +66,7 @@ namespace CostEffectiveLoadBalancer.Web
 
                 spa.Options.SourcePath = "ClientApp";
 
-                spa.Options.StartupTimeout = TimeSpan.FromSeconds(80);
+                spa.Options.StartupTimeout = TimeSpan.FromSeconds(120);
 
                 if (env.IsDevelopment())
                 {
