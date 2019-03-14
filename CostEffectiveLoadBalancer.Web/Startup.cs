@@ -1,6 +1,7 @@
 namespace CostEffectiveLoadBalancer.Web
 {
     using System;
+    using AutoMapper;
     using Dal;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -24,8 +25,9 @@ namespace CostEffectiveLoadBalancer.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<CostEffectiveLoadBalancerContext>(x => x.UseMySql("server=localhost;database=celb;uid=celb;pwd=menudakk"));
+            services.AddDbContext<CostEffectiveLoadBalancerContext>(x => x.UseMySql("server=192.168.99.100;database=celb;uid=celb;pwd=menudakk"));
             services.AddLogging(c => c.AddConsole());
 
             // In production, the Angular files will be served from this directory
